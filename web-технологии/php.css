@@ -1,0 +1,18 @@
+html {
+  font-family: 'Roboto Slab', serif;
+
+}
+.field1 {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  background: #DBF970;
+  color: black;
+  font-size: 30px;
+  /*background-image: url(OzdcNhGZCiY.jpg);*/
+}
+.field2{
+  background: white;
+  color: black;
+  font-size: 25px;
+}

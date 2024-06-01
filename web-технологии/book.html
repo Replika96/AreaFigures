@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="labs/style - 3.css" rel="stylesheet" type="text/css">
+	<!-- font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+		<title>Табличечка</title>
+</head>
+<body>
+	<header>
+		<h1 style="text-align:center"> Магазин Книжек
+		</h1>
+	</header>
+	<main>
+		<script> 
+			let form = document.getElementById('korzina');
+			let price = 0;
+			let cart = 0;
+			
+			function plusFunction1(){
+				cart++;
+			    price += 400; 
+				document.forms[0].prices.value = price;
+			    }
+			function minusFunction1(){
+				cart--;
+			    price -= 400;
+				document.forms[0].prices.value = price;
+			}
+			function plusFunction2(){
+				cart++;
+			    price += 300; 
+				document.forms[0].prices.value = price;
+			    }
+			function minusFunction2(){
+				cart--;
+			    price -= 300;
+				document.forms[0].prices.value = price;
+			}
+			function plusFunction3(){
+				cart++;
+			    price += 250; 
+				document.forms[0].prices.value = price;
+			    }
+			function minusFunction3(){
+				// if (cart>0) and (price>0){
+				// 	cart--;
+				//     price -= 250;
+				//     else{
+				//     	price=0;
+				// 		cart=0;
+				//     }
+				// }
+				cart--;
+				price -= 250;
+				document.forms[0].prices.value = price;
+			}
+			function totalSale() {
+				sale=0;
+			    if (price > 5000)
+			    {
+			       document.getElementById('sale').innerHTML= "30%";
+			       sale=0.3;
+			       // price*=0.3
+			    }
+			    else if((price >= 3000)&&(price <4999))
+			    {
+			    	document.getElementById('sale').innerHTML= "25%";
+			    	sale=0.25;
+			    }
+			    else if((price >1000)&&(price <2999))
+			    {
+			    	document.getElementById('sale').innerHTML= "15%";
+			    	sale=0.15;
+			    }
+			    else if((price > 1) && (price <=999))
+			    {
+			     	document.getElementById('sale').innerHTML= "0%";
+			    }
+			}
+			function sbros(){
+				price=0;
+				cart=0;
+				document.getElementById('endPrice').innerHTML= price +"  руб.";
+				document.getElementById('count').innerHTML= "Кол-во книг:" + cart;
+			}
+			function priceFunction() {
+			    document.getElementById('endPrice').innerHTML= Math.round(price-(price*sale)) +"  руб.";
+			    document.getElementById('count').innerHTML= "Кол-во книг: " + cart;
+			}  
+		</script>
+		<form action="url" method="post" id="korzina">
+			<fieldset class='mainform'>
+			<fieldset class="personal">
+				<legend>Выбор товара</legend>
+			<div id="wrapper" class="parent">
+				
+				<div class="child">
+					<p style="text-align:center;">
+					<img src="cover.png" alt="book1">	
+					</p>
+				</div>
+				<div class="child_2">
+					<label for="Jane Eyre">Джейн Эйр - Шарлотта Бронте</label><br>
+					<label for="price"> Цена: 400 рублей <br>
+						<input type="button" id="prices" class="plus" value="+" onclick="plusFunction1(), priceFunction(), totalSale()"></label>
+						<input type="button" id="prices" class="minus" value="-" onclick="minusFunction1(), priceFunction(), totalSale()">
+				</div>
+			</div><br>
+			<div id="wrapper" class="parent">
+			<div class="child">
+					<p style="text-align:center;">
+					<img src="cover-_1_.png" alt="book1">	
+					</p>
+				</div>
+				<div class="child_2"> 
+					  	<label for="Im Westen nichts Neues">На западном фронте без перемен - Эрих Мария Ремарк</label><br>
+					  	<label for="price"> Цена: 300 рублей </label><br>
+							<input type="button" id="prices" class="plus" value="+" onclick="plusFunction2(), priceFunction(), totalSale()"> 
+							<input type="button" id="prices" class="minus" value="-" onclick="minusFunction2(), priceFunction(), totalSale()">
+				</div>
+			</div>	<br>
+			<div id="wrapper" class="parent">
+				<div class="child">
+					<p style="text-align:center;">
+					<img src="cover-_2_.png" alt="book1">	
+					</p>
+				</div>
+				<div class="child_2">
+					  	<label for="Die Verwandlung"> Превращение - Франц Кафка </label><br>
+					  	<label for="price"> Цена: 250 рублей </label><br>
+						    <input type="button" id="prices" class="plus" value="+" onclick="plusFunction3(), priceFunction(), totalSale()"> 
+						    <input type="button" id="prices" class="minus" value="-" onclick="minusFunction3(), priceFunction(), totalSale()">
+				</div>
+			</div>
+			</fieldset>
+				<p style="text-align:center;"> Итого к оплате <span id ="endPrice"> руб.</span><br> <span id ="count"> Кол-во книг: </span><br>
+				<label for="sale">Размер скидочки</label> 
+				<span id ="sale">%</span><br><br>
+					<input type="button" value="Купить" class="button" onclick="priceFunction()">
+					<input type="button" value="Сброс" class="button" onclick="sbros()">
+				</p>
+			</fieldset>
+		</form>
+	</main>
+</body>
+</html>
